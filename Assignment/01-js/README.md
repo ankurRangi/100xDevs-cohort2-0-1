@@ -1,3 +1,7 @@
+Edit:
+![image](https://github.com/ankurRangi/100xDevs-cohort2-0-1/assets/32847436/7576af54-7f07-4698-bdd8-722fc06b5ea8)
+
+
 ## JavaScript Assignments
 
 You are provided empty JavaScript files (or having function signatures) in this directory. 
