@@ -15,10 +15,9 @@
 
   Once you've implemented the logic, test your code by running
 */
-
 class Calculator {
 
-  constructor(result){
+  constructor(result=0){
     this.result = result;
   }
   add(number){
@@ -31,6 +30,9 @@ class Calculator {
     this.result = this.result * number;
   }
   divide(number){
+    if (number == 0){
+      throw new Error("Can not divide by Zero");
+    }
     this.result = this.result/number;
   }
   clear(){
@@ -39,10 +41,20 @@ class Calculator {
   getResult(){
     return this.result;
   }
+  isNumber(value) {
+    return typeof value === 'number';
+  }
   calculate(arithmeticStr){
-    arithmeticStr = arithmeticStr.replace(/\s+/g, '');
-    // arithmeticStr = arithmeticStr.split('');
-    console.log(arithmeticStr)
+    arithmeticStr = arithmeticStr.replace(/[^a-zA-Z0-9().+\-*/]/g, "");
+    const legitExp = /^[0-9().+\-*/\s]+$/;
+    if(!legitExp.test(arithmeticStr)){
+      throw new Error("The arthemetic string is incorrect!")
+    }
+    const tempRes = eval(arithmeticStr);
+    if (isNaN(tempRes) || !isFinite(tempRes)){
+      throw new Error("The result is either infinte or NaN!")
+    }
+    this.result = tempRes;
   }
 }
 

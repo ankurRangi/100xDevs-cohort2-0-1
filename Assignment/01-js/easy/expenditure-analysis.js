@@ -22,7 +22,6 @@ function calculateTotalSpentByCategory(transactions) {
             });
         }
     }
-    console.log(result);
     return result;
 }
 
