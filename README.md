@@ -9,5 +9,7 @@ Learnings and Ideas related to 100xDevs Cohort 2.0
 # Week 1: 
 1. Explored the basics of JavaScript.
 2. Completed Week 01 Assignments (7/7).
+3. Finished basic JS Datatypes.
+4. Finished functions, loops and callbacks.
 
    
