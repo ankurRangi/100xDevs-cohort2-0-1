@@ -10,6 +10,6 @@ Learnings and Ideas related to 100xDevs Cohort 2.0
 1. Explored the basics of JavaScript.
 2. Completed Week 01 Assignments (7/7).
 3. Finished basic JS Datatypes.
-4. Finished functions, loops and callbacks.
-
+4. Finished functions, loops, and callbacks.
+5. Finished Synchronous vs Asynchronous functions, Promises, and Async awaits instead of .then() from promises syntax.
    
