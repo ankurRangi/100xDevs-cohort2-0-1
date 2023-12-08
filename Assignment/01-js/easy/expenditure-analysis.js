@@ -5,7 +5,7 @@
   Output - [{ category1 - total_amount_spent_on_category1 }, { category2 - total_amount_spent_on_category2 }]
 */
 
-function calculateTotalSpentByCategory(transactions) {
+function calculateTotalSpentByCategory2(transactions) {
     if (transactions.length < 1){
         return [];
     }
@@ -23,6 +23,24 @@ function calculateTotalSpentByCategory(transactions) {
         }
     }
     return result;
+}
+
+// Alternative logic
+function calculateTotalSpentByCategory(transactions) {
+    let resultTrans = new Map();
+
+    for(const transaction of transactions){
+        const {category, price } = transaction;
+
+        if(! resultTrans.has(category)) {
+            resultTrans.set(category, 0);
+        }
+
+        resultTrans.set(category, resultTrans.get(category) + price);
+    }
+    console.log(resultTrans);
+    
+    return Array.from(resultTrans, ([category, totalSpent]) => ({category, totalSpent}));
 }
 
 module.exports = calculateTotalSpentByCategory;
