@@ -3,7 +3,6 @@
 */
 
 function wait(n) {
-    let a = 0;
 function timeUp(a){
     console.log("Inside Function: ", a);
     return a++;
