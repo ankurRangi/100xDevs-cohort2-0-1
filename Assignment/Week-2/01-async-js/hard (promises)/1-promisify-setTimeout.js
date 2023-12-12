@@ -3,8 +3,15 @@
 */
 
 function wait(n) {
-function timeUp(a){
-    console.log("Inside Function: ", a);
-    return a++;
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Done");
+        }, (n));
+    });
 }
-}
+
+wait(2000).then(
+    (value) => {
+        console.log("Execution after promise!: ", value);
+    }
+)
