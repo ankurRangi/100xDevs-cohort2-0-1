@@ -2,16 +2,25 @@
     Write a function that returns a promise that resolves after n seconds have passed, where n is passed as an argument to the function.
 */
 
+// function wait(n) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve("Done");
+//         }, (n));
+//     });
+// }
+
 function wait(n) {
-    return new Promise((resolve) => {
+    let pr = new Promise((resolve) => {
         setTimeout(() => {
-            resolve("Done");
+            resolve("Completed");
         }, (n));
     });
+    return pr;
 }
 
 wait(2000).then(
     (value) => {
-        console.log("Execution after promise!: ", value);
+        console.log("Execution after promise!: ",value);
     }
 )
