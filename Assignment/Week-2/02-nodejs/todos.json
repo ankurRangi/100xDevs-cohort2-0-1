@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "todo": "Do something nice for someone I care about",
+        "completed": true,
+        "userId": 26
+    },
+    {
+        "id": 2,
+        "todo": "Don't dp something for someone I care about",
+        "completed": false,
+        "userId": 21
+    },
+    {
+        "id": 3,
+        "todo": "Revision for test tomorrow",
+        "completed": false,
+        "userId": 20
+    }
+]
