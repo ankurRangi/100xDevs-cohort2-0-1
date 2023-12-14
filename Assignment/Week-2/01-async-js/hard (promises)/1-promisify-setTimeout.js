@@ -9,7 +9,7 @@
 //         }, (n));
 //     });
 // }
-
+console.log("Program Started");
 function wait(n) {
     let pr = new Promise((resolve) => {
         setTimeout(() => {
