@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "ankurRangi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "zod": "^3.22.4"
+  }
 }
