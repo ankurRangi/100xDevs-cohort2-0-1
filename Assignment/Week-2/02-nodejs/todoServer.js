@@ -41,29 +41,35 @@
 */
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 const port = 3000;
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 dataArray = [
   {
     "id": 1,
     "todo": "Do something nice for someone I care about",
     "completed": true,
+    "description": "Gift a flower to someone I knowGift a flower to someone I knowGift \
+                    a flower to someone I know",
     "userId": 26
   },
   {
     "id": 2,
     "todo": "Don't dp something for someone I care about",
     "completed": false,
+    "description": "Throw a flower from someone I Throw a flower from someone I  know Throw \
+                    a flower from someone I know",
     "userId": 21
   },
   {
     "id": 3,
     "todo": "Revision for test tomorrow",
     "completed": false,
+    "description": "Pyar vyaar sab dhoka hai, padle bete mauka hai",
     "userId": 20
   }
 ]
@@ -72,7 +78,6 @@ dataArray = [
 app.get('/todos', (request, response) => {
   return response.status(200).json(
     {
-        message: 'Todo List',
         data: dataArray,
     });
 })
@@ -96,12 +101,68 @@ app.get('/todos/:id', (request, response) => {
 })
 
 // Create a new todo item
-// app.post('/todos', (request, response) => {
-//   try{
+app.post('/todos', (request, response) => {
+  try{
+    const data = request.body;
+    dataArray.push({
+      "id": data.id,
+      "todo": data.todo,
+      "completed": data.completed,
+      "description": data.description,
+      "userId": data.userId,
+    })
+    console.log(dataArray);
+    return response.status(200).json({
+      message: "Todo added successfully",
+      data: dataArray
+    });
 
-//   }
-// })
+  }catch(error){
+    response.status(500).json({
+      message: error.message
+    })
+  }
+})
 
+// Update an existing todo item by ID
+app.put('/todos/:id', (request, response) => {
+  try{
+    const data = request.body;
+    dataArray.map(element => {
+      if (String(element.id) === request.params.id){
+        Object.keys(data).forEach(key => {
+          element[key] = data[key];
+        })
+      }
+    });
+    console.log(dataArray);
+    return response.status(200).json({
+      message: "Todo edited successfully",
+      data: dataArray
+    })
+  }catch(error){
+    response.status(500).json({
+      message: error.message
+    })
+  }
+})
+
+// Delete a todo item by ID
+app.delete('/todos/:id', (request, response) => {
+  try{
+    const indexId = dataArray.findIndex(el => {
+      return el.id == request.params.id;
+    })
+    dataArray.splice(indexId, 1);
+    return response.status(200).json({
+      message: "Todo edited successfully"
+    })
+  }catch(error){
+  response.status(500).json({
+    message: error.message
+  })
+  }
+})
 
 
 app.listen(port, (error) => {
