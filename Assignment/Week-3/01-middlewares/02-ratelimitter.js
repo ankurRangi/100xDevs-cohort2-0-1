@@ -12,15 +12,42 @@ const app = express();
 // clears every one second
 
 let numberOfRequestsForUser = {};
-setInterval(() => {
-    numberOfRequestsForUser = {};
-}, 1000)
 
-app.get('/user', function(req, res) {
+function requestLimit(req, res, next){
+  // console.log(numberOfRequestsForUser);
+  const id = req.get("user-id");
+
+  if (id in numberOfRequestsForUser){
+    if (numberOfRequestsForUser[id] <= 5){
+      numberOfRequestsForUser[id] = numberOfRequestsForUser[id] + 1;
+      next();
+    }
+    else{
+      res.status(404).send("More than 5 requests send in a second");
+    }
+  }
+  else{
+    numberOfRequestsForUser[id] = 1;
+    next();
+  }
+}
+
+async function refreshRequest(){
+  return await new Promise( (resolve) => {
+    setInterval(() => {
+      numberOfRequestsForUser = {};
+      resolve('Refreshed');
+    }, 1000)
+  });
+}
+
+refreshRequest();
+
+app.get('/user', requestLimit, function(req, res) {
   res.status(200).json({ name: 'john' });
 });
 
-app.post('/user', function(req, res) {
+app.post('/user', requestLimit, function(req, res) {
   res.status(200).json({ msg: 'created dummy user' });
 });
 
