@@ -14,4 +14,8 @@ This week is divided into three parts for assignments -
  - Write a function that takes a jwt as input and returns true if the jwt can be VERIFIED. Return false otherewise
  - To test, go to the 02-jwt folder and run `npx jest ./tests`
 
+   ## Solution Update:
+   ![image](https://github.com/ankurRangi/100xDevs-cohort2-0-1/assets/32847436/7965bef8-207a-46cc-bc2c-778df804dc38)
+
+
 ## Databases
