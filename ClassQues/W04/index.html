@@ -7,8 +7,13 @@
 </head>
 <script>
     let timeout;
+    // Stop the immediate calls from frontend to backend to fetch the data)
     function debouncePopulateDiv(){
-        
+        clearTimeout(timeout);
+        // Clearing timeout to stop the backend call before 100 milisecs
+        const timeout = setInterval( ()=>{
+            populateDiv()
+        }, 100)
     }
 
     function populateDiv(){
@@ -35,10 +40,9 @@
     }
 </script>
 <body>
-    <input id="firstNumber" type="text" placeholder="First Number"></input> <br></br>
-    <input id="secondNumber" type="text" placeholder="Second Number"></input> <br></br>
-    <button onclick="populateDiv2()">Calculate Sum</button><br></br>
-
+    <input oninput="debouncePopulateDiv()" id="firstNumber" type="text" placeholder="First Number"></input> <br></br>
+    <input oninput="debouncePopulateDiv()" id="secondNumber" type="text" placeholder="Second Number"></input> <br></br>
+    <!-- <button onclick="populateDiv2()">Calculate Sum</button><br></br> -->
     <div id="Final Sum"></div>
     
 </body>
