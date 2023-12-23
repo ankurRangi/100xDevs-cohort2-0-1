@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function populateDiv(){
+        const a = document.getElementById("firstNumber").value;
+        const b = document.getElementById("secondNumber").value;
+        // const element = document.getElementById("Final Sum")
+        // element.innerHTML = parseInt(a) + parseInt(b); Frontend logic
+        // For backend logic
+        fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`)
+            .then(function(response){
+                response.text()
+                .then(function(ans){
+                    document.getElementById("Final Sum").innerHTML = ans;
+                })
+            })
+    }
+    async function populateDiv2(){
+        const a = document.getElementById("firstNumber").value;
+        const b = document.getElementById("secondNumber").value;
+
+        const respone = await fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`);
+        const ans = await response.text();
+        document.getElementById("Final Sum").innerHTML = ans;
+    }
+</script>
+<body>
+    <input id="firstNumber" type="text" placeholder="First Number"></input> <br></br>
+    <input id="secondNumber" type="text" placeholder="Second Number"></input> <br></br>
+    <button onclick="populateDiv2()">Calculate Sum</button><br></br>
+
+    <div id="Final Sum"></div>
+    
+</body>
+</html>
