@@ -11,9 +11,9 @@
     function debouncePopulateDiv(){
         clearTimeout(timeout);
         // Clearing timeout to stop the backend call before 100 milisecs
-        const timeout = setInterval( ()=>{
+        timeout = setInterval( ()=>{
             populateDiv()
-        }, 100)
+        }, 1000)
     }
 
     function populateDiv(){
