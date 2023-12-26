@@ -14,5 +14,23 @@ Learnings and Ideas related to 100xDevs Cohort 2.0
 5. Finished Synchronous vs Asynchronous functions, Promises, and Async awaits instead of .then() from promises syntax.
 
 # Week 1:
-1. 
+1. Basic of Node.js and Core understanding on Promises and Async Await structure. 
+2. Node.js Assignment for better grasp on the fundamentals.
+3. All Assignments submitted.
+
+# Week 2:
+1. Basis of Backend Developer and local server creation using Express.js - Part 01
+2. Browser HTTP calls using POSTMAN.
+3. Assignments related to Promises.
+4. All Assignments submitted.
+
+# Week 3:
+1. Basis of Backend Developer and local server creation using Express.js - Part 02
+2. Databases (SQL/NoSQL) [MongoDB/PostgreSQL] installation.
+3. MongoDB connection with backend sevver using Mongoose library.
+4. Dive into authorization using JWT.
+5. Data Validation using ZOD library.
+
+# Week 4:
+1.
    
