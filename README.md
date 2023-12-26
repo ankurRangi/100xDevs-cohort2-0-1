@@ -32,5 +32,8 @@ Learnings and Ideas related to 100xDevs Cohort 2.0
 5. Data Validation using ZOD library.
 
 # Week 4:
-1.
+1. Basic of Frontend developer using HTML and Document Object Model (DOM).
+2. Usses of debouncing (backend calls in every certain intervals)
+3. Introduction to React as an efficient alternative for DOM objects to update or delete data in frontend based on the react difference algorithm.
+4.
    
