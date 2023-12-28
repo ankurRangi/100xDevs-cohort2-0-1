@@ -23,6 +23,19 @@ router.post('/signup', (req, res) => {
 
 router.post('/courses', adminMiddleware, (req, res) => {
     // Implement course creation logic
+    if (Admin.findOne({username: req.body.username})){
+        res.status(400).json({
+            msg: "Admin already exists"
+        })
+    }
+    const admin = new Admin({
+            username: req.body.username,
+            password: req.body.password
+            });
+    admin.save();
+    res.status(200).json({
+        message: 'Admin created successfully'
+    });
 });
 
 router.get('/courses', adminMiddleware, (req, res) => {
