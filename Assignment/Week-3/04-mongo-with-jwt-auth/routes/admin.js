@@ -1,10 +1,11 @@
 const { Router } = require("express");
 const adminMiddleware = require("../middleware/admin");
 const router = Router();
+const zod = require("zod");
 
 // Admin Routes
-router.post('/signup', (req, res) => {
-    // Implement admin signup logic
+router.post('/signup', async (req, res) => {
+    
 });
 
 router.post('/signin', (req, res) => {
