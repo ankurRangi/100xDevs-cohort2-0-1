@@ -1,10 +1,30 @@
 const { Router } = require("express");
 const router = Router();
-const userMiddleware = require("../middleware/user");
+const {userMiddleware, userValidation} = require("../middleware/user");
+const { User } = require("../db");
+
 
 // User Routes
-router.post('/signup', (req, res) => {
+router.post('/signup', userValidation, async (req, res) => {
     // Implement user signup logic
+    const username = req.body.username;
+    const password = req.body.password;
+
+    const user = await User.findOne({username: username, password: password});
+    if (user){
+        res.status(400).json({
+            message: "User already exists"
+        })
+    }else{
+        await User.create({
+            username: username,
+            password: password
+        })
+        res.status(201).json({
+            message: "User added successfully"
+        })
+    }
+    
 });
 
 router.post('/signin', (req, res) => {

@@ -1,5 +1,11 @@
 const jwt = require("jsonwebtoken");
 const secret = require("../index");
+const zod = require("zod");
+
+const userSchema = zod.object({
+    email: zod.string().email({ message: "Invalid email address" }),
+    password: zod.string().min(8)
+});
 
 function userMiddleware(req, res, next) {
     const token = req.headers.authorization;
@@ -10,10 +16,24 @@ function userMiddleware(req, res, next) {
     if(decodedValue.username){
         next();
     }else{
-        res.json({
+        res.status(403).json({
             message: "You are not authenticated"
         })
     }
 }
 
-module.exports = userMiddleware;
+function userValidation(req, res, next){
+    const response = userSchema.safeParse(req.body)
+    if(!response.success){
+        next();
+    }else{
+        res.status(403).json({
+            message: "Invalid data format"
+        })
+    }
+}
+
+module.exports = {
+    userMiddleware, 
+    userValidation
+};
