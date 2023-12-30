@@ -3,7 +3,7 @@ const secret = require("../index");
 const zod = require("zod");
 
 const userSchema = zod.object({
-    email: zod.string().email({ message: "Invalid email address" }),
+    username: zod.string().email({ message: "Invalid email address" }),
     password: zod.string().min(8)
 });
 
@@ -24,11 +24,13 @@ function userMiddleware(req, res, next) {
 
 function userValidation(req, res, next){
     const response = userSchema.safeParse(req.body)
-    if(!response.success){
+    if(response.success){
+        // console.log(response)
         next();
     }else{
         res.status(403).json({
-            message: "Invalid data format"
+            message: "Invalid data format",
+            response: response
         })
     }
 }

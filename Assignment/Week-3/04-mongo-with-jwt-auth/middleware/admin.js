@@ -1,5 +1,11 @@
 const jwt = require("jsonwebtoken");
 const secret = require("../index");
+const zod = require("zod");
+
+const adminSchema = zod.object({
+    username: zod.string().email({message: "Invalid email address"}),
+    password: zod.string().min(8)
+})
 
 // Middleware for handling auth
 function adminMiddleware(req, res, next) {
@@ -19,4 +25,19 @@ function adminMiddleware(req, res, next) {
     
 }
 
-module.exports = adminMiddleware;
+function adminValidation(req, res, next){
+    const response = adminSchema.safeParse(req.body);
+    if(response.success){
+        next();
+    }else(
+        res.status(403).json({
+            message: "Invalid data format",
+            response: response.data
+        })
+    )
+}
+
+module.exports = {
+    adminMiddleware,
+    adminValidation
+};

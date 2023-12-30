@@ -7,21 +7,27 @@ const { User } = require("../db");
 // User Routes
 router.post('/signup', userValidation, async (req, res) => {
     // Implement user signup logic
-    const username = req.body.username;
-    const password = req.body.password;
-
-    const user = await User.findOne({username: username, password: password});
-    if (user){
-        res.status(400).json({
-            message: "User already exists"
-        })
-    }else{
-        await User.create({
-            username: username,
-            password: password
-        })
-        res.status(201).json({
-            message: "User added successfully"
+    try{
+        const username = req.body.username;
+        const password = req.body.password;
+        
+        const user = await User.findOne({username: username, password: password});
+        if (user){
+            res.status(400).json({
+                message: "User already exists"
+            })
+        }else{
+            await User.create({
+                username: username,
+                password: password
+            })
+            res.status(201).json({
+                message: "User added successfully"
+            })
+        }
+    }catch(err){
+        res.json({
+            message: err.message
         })
     }
     
