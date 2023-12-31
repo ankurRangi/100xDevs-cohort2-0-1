@@ -26,7 +26,6 @@ function adminMiddleware(req, res, next) {
 }
 
 function adminValidation(req, res, next){
-    console.log("valid: ",secret);
     const response = adminSchema.safeParse(req.body);
     if(response.success){
         next();
