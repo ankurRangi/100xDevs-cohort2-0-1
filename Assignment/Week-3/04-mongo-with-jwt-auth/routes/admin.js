@@ -3,7 +3,7 @@ const {adminMiddleware, adminValidation} = require("../middleware/admin");
 const router = Router();
 const { Admin } = require("../db");
 const jwt = require("jsonwebtoken");
-const secret = require("../index");
+// const index = require('../index');
 
 // Admin Routes
 router.post('/signup', adminValidation, async (req, res) => {
@@ -32,27 +32,27 @@ router.post('/signup', adminValidation, async (req, res) => {
     } 
 });
 
-router.post('/signin', adminValidation, async (req, res) => {
+router.post('/signin', adminValidation,  (req, res) => {
     // Implement admin signup logic
     try{
+        // console.log("admin: ", index.initializeJWT);
+
         const username = req.body.username;
         const password = req.body.password;
 
-        const admin = await Admin.findOne({username: username, password: password})
-        if(admin){
-            const token = jwt.sign({
-                username: username,
-                // password: password
-            }, secret, { expiresIn: '24h'}
-        );
+        // const admin = await Admin.findOne({username: username, password: password})
+        // console.log(admin);
+        // if(admin){
+            const token = jwt.sign({username}, "");
+
             res.status(201).json({
                 token: token
             })
-        }else{
-            res.status(403).json({
-                message: "Admin does not exist"
-            })
-        }
+        // }else{
+        //     res.status(403).json({
+        //         message: "Admin does not exist"
+        //     })
+        // }
     }catch(err){
         res.status(500).json({
             message: err.message

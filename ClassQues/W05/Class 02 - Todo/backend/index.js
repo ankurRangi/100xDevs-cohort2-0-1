@@ -4,7 +4,7 @@ const { createTodoSchema, updateTodoSchema } = require("./types");
 const { todo } = require("./db");
 const app = express();
 
-app.use(exp.json());
+app.use(express.json());
 
 app.post('/todo', async (req, res) =>{
     const createPayload = req.body;

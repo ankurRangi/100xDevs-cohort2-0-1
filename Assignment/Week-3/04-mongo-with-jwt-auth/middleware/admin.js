@@ -11,7 +11,7 @@ const adminSchema = zod.object({
 function adminMiddleware(req, res, next) {
 
     const token = req.headers.authorization;
-    const words = auth.split(" ");
+    const words = token.split(" ");
     const jwtToken = words[1];
     const decodedValue = jwt.verify(jwtToken, secret);
 
@@ -26,6 +26,7 @@ function adminMiddleware(req, res, next) {
 }
 
 function adminValidation(req, res, next){
+    console.log("valid: ",secret);
     const response = adminSchema.safeParse(req.body);
     if(response.success){
         next();
