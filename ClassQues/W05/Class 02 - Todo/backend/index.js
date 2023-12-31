@@ -1,32 +1,56 @@
 // Write express boilerplate code
 const express = require("express");
 const { createTodoSchema, updateTodoSchema } = require("./types");
+const { todo } = require("./db");
 const app = express();
 
 app.use(exp.json());
 
-app.post('/todo', (req, res) =>{
+app.post('/todo', async (req, res) =>{
     const createPayload = req.body;
     const parsedPayload = createTodoSchema.safeParse(createPayload);
     if (!parsedPayload.success){
         res.status(411).json({
             message: "You have send wrong inputs"
         })
-    }else{
-        return
+        return;
     }
+    await todo.create({
+        title: createPayload.title,
+        description: createPayload.description,
+        completed: false
+    })
+    res.json({
+        msg: "Todo Created"
+    })
 })
 
-app.get('/todos', (req, res) =>{
-
+app.get('/todos', async (req, res) =>{
+    const todos = await todo.find();
+    // console.log(todos) //type: promoise, so we need a await
+    res.json({
+        todos
+    })
 })
 
-app.get('/todos/:todoId', (req, res) =>{
+app.put('/completed', async (req, res) =>{
+    const createPayload = req.body;
+    const parsedPayload = updateTodoSchemaTodoSchema.safeParse(createPayload);
+    if (!parsedPayload.success){
+        res.status(411).json({
+            message: "You have send wrong inputs"
+        })
+        return;
+    }
+    await todo.update({
+        _id: req.body._id
+    }, {
+        completed: true
+    })
 
-})
-
-app.put('/completed', (req, res) =>{
-
+    res.json({
+        message: "Todo marked as completed"
+    })
 })
 
 app.listen(3000);
