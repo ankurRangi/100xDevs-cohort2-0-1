@@ -22,7 +22,7 @@ function App() {
 }
 
 function CardWrapper({children}) {
-  return <div style={{border: "2px solid black", padding: 20, margi: 10}}>
+  return <div style={{border: "2px solid black", padding: 20, margin: 10}}>
     {children}
   </div>
 }
