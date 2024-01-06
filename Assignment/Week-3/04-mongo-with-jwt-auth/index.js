@@ -4,9 +4,8 @@ const app = express();
 const adminRouter = require("./routes/admin")
 const userRouter = require("./routes/user");
 
-const JWT_SECRET = "ankur_server";
+// const JWT_SECRET = "ankur_server";
 
-// Middleware for parsing request bodies
 app.use(bodyParser.json());
 app.use("/admin", adminRouter)
 app.use("/user", userRouter)
@@ -18,5 +17,4 @@ app.listen(PORT, () => {
 });
 
 // exports.JWT_SECRET = JWT_SECRET;
-// export const JWT_SECRET = "ankur_server";
-module.exports = JWT_SECRET;
+// module.exports = JWT_SECRET;

@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = require("../index");
 const zod = require("zod");
+const JWT_SECRET = require("../db/jwtSecret");
+
 
 const userSchema = zod.object({
     username: zod.string().email({ message: "Invalid email address" }),
@@ -25,7 +26,6 @@ function userMiddleware(req, res, next) {
 function userValidation(req, res, next){
     const response = userSchema.safeParse(req.body)
     if(response.success){
-        // console.log(response)
         next();
     }else{
         res.status(403).json({
