@@ -5,9 +5,19 @@ import './App.css'
 
 function App() {
   return (
+    <div>
+
     <CardWrapper>
       Hi there
     </CardWrapper>
+    
+    <CardWrapper>
+      <div>
+        Hiiiiii
+      </div>
+    </CardWrapper>
+    </div>
+    
   )
 }
 
