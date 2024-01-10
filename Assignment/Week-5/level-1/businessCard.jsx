@@ -13,6 +13,7 @@ export function BusinessCard(props){
             <a href={props.linkedin} target="_blank">Linkedin</a>
             <a href={props.twitter} target="_blank">Twitter</a>
             </div>
+            
         </div>
     )
 }
