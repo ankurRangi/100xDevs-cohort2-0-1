@@ -8,19 +8,19 @@ export function Assignment1() {
     // Your solution starts here
     const expensiveValue = useMemo(() => {
         let fact = 1;
-        for (let i=2; i<= input; i++){
-            fact = fact*i;
+        for (let i = 2; i <= input; i++) {
+            fact = fact * i;
         }
         return fact;
-    }, [input]); 
+    }, [input]);
     // Your solution ends here
 
     return (
         <div>
-            <input 
-                type="number" 
-                value={input} 
-                onChange={(e) => setInput(Number(e.target.value))} 
+            <input
+                type="number"
+                value={input}
+                onChange={(e) => setInput(Number(e.target.value))}
             />
             <p>Calculated Value: {expensiveValue}</p>
         </div>

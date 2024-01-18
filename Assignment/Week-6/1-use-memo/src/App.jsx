@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       {/* <Assignment1 /> */}
-      <Assignment2 />
-      {/* <Assignment3 /> */}
+      {/* <Assignment2 /> */}
+      <Assignment3 />
     </>
   )
 }
