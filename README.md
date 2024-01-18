@@ -34,8 +34,11 @@ Learnings and Ideas related to 100xDevs Cohort 2.0
 # [Week 4:](https://app.100xdevs.com/courses/3/44/160)
 1. 4.1 - ECMAScript, Basic Frontend developer using HTML and Document Object Model (DOM).
 2. Methods to Select Elements,
+   
    a. querySelector()
+   
    b. getElementById()
+   
    c. getElementsByClassName()
    
 4. Communicating to the Backend Server using Fetch and Axios
@@ -57,12 +60,16 @@ Learnings and Ideas related to 100xDevs Cohort 2.0
 3. Importance of **Key** prop in a list
 5. Wrapper Components
 6. React Hooks are: useEffect, useMemo, useCallback,  useRef, useReducer, useContext, useLayoutEffect
+   
    a. useEffect(): Used for tasks such as data fetching, subscriptions, or manually changing the DOM
+   
    b. useMemo(): Used to memoize a callback value
+   
    b. useCallback(): memoize a callback function/component
 
-# [Week 7:](https://app.100xdevs.com/courses/3/154/155)
-1. Prop Drilling
-2. Context API
-3. Recoil
+# [Week 7: Prop Drilling, Context API, Recoil](https://app.100xdevs.com/courses/3/154/155)
+1. Routing
+2. Prop Drilling
+3. Context API
+4. Recoil
    
