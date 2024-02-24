@@ -13,6 +13,8 @@ function App() {
         <div style={{backgroundColor: "green"}}>Hi</div>
         <div style={{backgroundColor: "blue"}}>Hi</div>
       </div>
+      <div className='flex'>
+      </div>
 
     </>
   )
