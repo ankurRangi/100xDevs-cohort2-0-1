@@ -10,6 +10,7 @@ export const RevenueCard = ({
             ?
         </div>
         <div className="flex justify-between">
+        
             <div>
                 ₹ {amount}
             </div>
